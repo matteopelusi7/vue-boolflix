@@ -1,7 +1,7 @@
 <template>
   <main>
 
-    <div>
+    <div class="input">
       <input type="text" v-model="search">
       <button @click="getFilms">Cerca</button>
     </div>
@@ -13,9 +13,7 @@
         <img :src="film.original_language" alt="">
         <p>{{ film.vote_average }}</p>
       </li>
-    </ul>
-
-    <ul class="list-wrapper">
+      
       <li v-for="serie in series" :key="serie.id" class="list-item">
         <p>{{ serie.name }}</p>
         <p>{{ serie.original_name }}</p>
@@ -121,9 +119,35 @@ export default {
 
 main {
   padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  .input {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+
+    input {
+      padding: 5px 15px;
+    }
+
+    button {
+      padding: 5px 15px;
+      border: none;
+      background-color: salmon;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  }
 
   .list-wrapper{
     padding: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
 
     img {
       width: 15px;
@@ -131,6 +155,13 @@ main {
 
     .list-item {
       padding: 15px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      width: 20%;
+      border: 1px solid salmon;
     }
   }
 }
