@@ -7,19 +7,11 @@
     </div>
 
     <ul class="list-wrapper">
-      <li v-for="film in films" :key="film.id" class="list-item">
-        <p>{{ film.title }}</p>
-        <p>{{ film.original_title }}</p>
-        <img :src="film.original_language" alt="">
-        <p>{{ film.vote_average }}</p>
-      </li>
-      
-      <li v-for="serie in series" :key="serie.id" class="list-item">
-        <p>{{ serie.name }}</p>
-        <p>{{ serie.original_name }}</p>
-        <img :src="serie.original_language" alt="">
-        <p>{{ serie.vote_average }}</p>
-      </li>
+      <FilmCard v-for="film in films" :key="film.id" :film="film" class="list-item" />
+    </ul>
+
+    <ul class="list-wrapper">
+      <SeriesCard v-for="serie in series" :key="serie.id" :serie="serie" class="list-item" />
     </ul>
 
   </main>
@@ -28,9 +20,15 @@
 <script>
 
 import axios from 'axios'
+import FilmCard from './FilmCard.vue'
+import SeriesCard from './SeriesCard.vue'
 
 export default {
   name: 'MainContent',
+  components: {
+    FilmCard,
+    SeriesCard
+  },
   data() {
     return {
       search: '',
@@ -148,21 +146,6 @@ main {
     padding: 10px 0;
     display: flex;
     flex-wrap: wrap;
-
-    img {
-      width: 15px;
-    }
-
-    .list-item {
-      padding: 15px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      justify-content: center;
-      align-items: center;
-      width: 20%;
-      border: 1px solid salmon;
-    }
   }
 }
 

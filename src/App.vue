@@ -11,22 +11,15 @@ import MainContent from './components/Main.vue'
 export default {
   name: 'App',
   components: {
-    MainContent
+    MainContent,
   }
 }
+
 </script>
 
 <style lang="scss">
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-ul {
-  list-style: none;
-}
+@import './assets/scss/common.scss';
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
