@@ -1,10 +1,8 @@
 <template>
 
   <li class="list-item">
-    <div class="img-poster">
-      <img v-if="serie.poster_path" :src="`https://image.tmdb.org/t/p/w342${serie.poster_path}`" alt="">
-      <img v-else src="https://image.tmdb.org/t/p/w342/wwemzKWzjKYJFfCeiB57q3r4Bcm.png" alt="">
-    </div>
+    <img v-if="serie.poster_path" :src="`https://image.tmdb.org/t/p/w342${serie.poster_path}`" alt="">
+    <img v-else src="https://image.tmdb.org/t/p/w342/wwemzKWzjKYJFfCeiB57q3r4Bcm.png" alt="">
     <div class="description">
       <p>{{ serie.name }}</p>
       <p>{{ serie.original_name }}</p>
@@ -12,6 +10,7 @@
       <p> Voto: 
         <i v-for="(n, i) in 5" :key="i" class="fa-star" :class=" (n <= getVote) ? 'fa-solid' :  'fa-regular' "></i>
       </p>
+      <p>Overview: {{ serie.overview }}</p>
     </div>
   </li>
   
@@ -49,7 +48,19 @@ export default {
   color: white;
   position: relative;
   background-color: black;
+  cursor: pointer;
 
+  &:hover {
+
+    .description {
+      display: block;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+  }
+  
   img {
     display: block;
   }
@@ -59,11 +70,16 @@ export default {
     margin-left: 10px;
   }
 
+  .title-info {
+    font-weight: 700;
+  }
+
   .description {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding-top: 10px;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 100%;
+    padding: 10px;
+    overflow-y: auto;
   }
 
   i {
