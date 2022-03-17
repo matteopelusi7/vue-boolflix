@@ -43,12 +43,12 @@ export default {
 
 .list-item {
   text-align: left;
-  width: 20%;
+  width: 18%;
   border: 2px solid white;
   color: white;
   position: relative;
   background-color: black;
-  cursor: pointer;
+  user-select: none;
 
   &:hover {
 
@@ -92,6 +92,14 @@ export default {
 
   .fa-regular {
     color: lightgrey;
+  }
+
+}
+
+@media all and ( max-width: 550px) {
+
+  .list-item {
+    width: 65%;
   }
 
 }

@@ -3,7 +3,7 @@
   <header class="input">
     <h1 class="title">Boolflix</h1>
     <div>
-      <input type="text" v-model="search" placeholder="Cerca film...">
+      <input @keyup.enter="$emit('search', search)" type="text" v-model="search" placeholder="Cerca film...">
       <button @click="$emit('search', search)">Cerca</button>
     </div>
   </header>
@@ -56,6 +56,14 @@ export default {
     color: white;
     border-radius: 8px;
     cursor: pointer;
+  }
+
+}
+
+@media all and ( max-width: 550px) {
+
+  .input {
+    flex-direction: column;
   }
 
 }
