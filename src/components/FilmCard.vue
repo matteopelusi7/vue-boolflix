@@ -9,7 +9,9 @@
       <p>Titolo: {{ film.title }}</p>
       <p>Titolo originale: {{ film.original_title }}</p>
       <img class="flag" :src="film.original_language" alt="">
-      <p>Voto: {{ film.vote_average }}</p>
+      <p> Voto: 
+        <i v-for="(n, i) in 5" :key="i" class="fa-star" :class=" (n <= getVote) ? 'fa-solid' :  'fa-regular' "></i>
+      </p>
     </div>
   </li>
   
@@ -25,6 +27,11 @@ export default {
       required: true
     }
   },
+  computed: {
+    getVote: function() {
+      return Math.ceil(this.film.vote_average / 2)
+    }
+  }
 }
 
 </script>
@@ -57,6 +64,18 @@ export default {
     top: 0;
     left: 0;
     padding-top: 10px;
+  }
+
+  i {
+    padding: 0 2px;
+  }
+
+  .fa-solid {
+    color: gold;
+  }
+
+  .fa-regular {
+    color: lightgrey;
   }
 
 }
